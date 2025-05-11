@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:knovator_gk_app/utils/routing/routes_name.dart';
+
+import '../utils/routing/routes_name.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -14,8 +15,8 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void _navigateToHome() async {
-    await Future.delayed(Duration(seconds: 3)); // Show the splash screen for 3 seconds
-    Navigator.pushReplacementNamed(context, RouteName.postListScreen);
+    await Future.delayed(Duration(seconds: 2)); // Show the splash screen for 3 seconds
+    Navigator.pushReplacementNamed(context, RouteName.homeScreen);
   }
 
   @override
@@ -29,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/images/knovator_logo.jpg',
+              'assets/images/clipwise-icon.png',
               width: 150, // Adjust width
               height: 150, // Adjust height
               fit: BoxFit.contain, // Ensures the image is displayed correctly

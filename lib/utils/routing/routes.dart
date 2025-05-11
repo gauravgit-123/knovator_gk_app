@@ -1,29 +1,24 @@
-
+import 'package:cracku_gk_app/screens/home_screen.dart';
+import 'package:cracku_gk_app/utils/routing/routes_name.dart';
 import 'package:flutter/material.dart';
-import 'package:knovator_gk_app/screens/splash_screen.dart';
-import 'package:knovator_gk_app/utils/routing/routes_name.dart';
 
-import '../../screens/post_detail/view.dart';
-import '../../screens/post_list/view.dart';
+import '../../screens/Questions/view.dart';
+import '../../screens/splash_screen.dart';
 
-
-
-
-
-class Routes{
+class Routes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
-    switch(settings.name) {
-      case RouteName.postListScreen:
-        return MaterialPageRoute(builder: (context) => PostListScreen());
+    switch (settings.name) {
+      case RouteName.quizScreen:
+        return MaterialPageRoute(builder: (context) => QuestionsScreen());
       case RouteName.splashScreen:
         return MaterialPageRoute(builder: (context) => SplashScreen());
-      case RouteName.postDescriptionScreen:
-        return MaterialPageRoute(builder: (context) => PostDetailScreen(postId: settings.arguments as int,));
+      case RouteName.homeScreen:
+        return MaterialPageRoute(builder: (context) => HomeScreen());
 
-      default :
-        return MaterialPageRoute(builder: (context){
+      default:
+        return MaterialPageRoute(builder: (context) {
           return Scaffold(
-            body:  Center(child: Text('No route defined')),
+            body: Center(child: Text('No route defined')),
           );
         });
     }

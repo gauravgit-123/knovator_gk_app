@@ -1,22 +1,69 @@
+class ApiResponse {
+  final List<Question> questions;
+  final bool success;
 
-import 'package:knovator_gk_app/data/response/status.dart';
+  ApiResponse({required this.questions, required this.success});
 
+  factory ApiResponse.fromJson(Map<String, dynamic> json) {
+    var questionsList = json['questions'] as List;
+    List<Question> questions =
+    questionsList.map((i) => Question.fromJson(i)).toList();
 
-class ApiResponse<T> {
-  Status? status;
-  T? data;
-  String? message;
+    return ApiResponse(
+      questions: questions,
+      success: json['success'],
+    );
+  }
+}
 
-  ApiResponse({this.status, this.data, this.message});
+class Question {
+  final String question;
+  final String? option1;
+  final String? option2;
+  final String? option3;
+  final String? option4;
+  final String? option5;
+  final String answer;
+  final String explanation;
+  String? selectedAnswer; // <-- make it mutable
 
-  ApiResponse.loading() : status = Status.loading;
+  Question({
+    required this.question,
+    this.option1,
+    this.option2,
+    this.option3,
+    this.option4,
+    this.option5,
+    required this.answer,
+    required this.explanation,
+    this.selectedAnswer,
+  });
 
-  ApiResponse.completed(this.data) : status = Status.completed;
+  factory Question.fromJson(Map<String, dynamic> json) {
+    return Question(
+      question: json['question'],
+      option1: json['option1'],
+      option2: json['option2'],
+      option3: json['option3'],
+      option4: json['option4'],
+      option5: json['option5'],
+      answer: json['answer'],
+      explanation: json['explanation'],
+      selectedAnswer: null, // not selected yet
+    );
+  }
 
-  ApiResponse.error(this.message) : status = Status.error;
-
-  @override
-  String toString() {
-    return "Status : $status \n Message: $message \n Data: $data";
+  Map<String, dynamic> toJson() {
+    return {
+      'question': question,
+      'option1': option1,
+      'option2': option2,
+      'option3': option3,
+      'option4': option4,
+      'option5': option5,
+      'answer': answer,
+      'explanation': explanation,
+      'selectedAnswer': selectedAnswer,
+    };
   }
 }

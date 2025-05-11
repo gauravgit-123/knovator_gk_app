@@ -1,7 +1,8 @@
+import 'package:cracku_gk_app/utils/routing/routes.dart';
+import 'package:cracku_gk_app/utils/routing/routes_name.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:knovator_gk_app/utils/routing/routes.dart';
-import 'package:knovator_gk_app/utils/routing/routes_name.dart';
+
 
 import 'utils/Constant.dart';
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'KnovatoR',
+      title: 'CrackU',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.dark,
